@@ -15,12 +15,19 @@ export class TouchbarManager {
 
     const reloadDocsButton = new TouchBarButton({
       label: 'Reload Docs',
+
       click: () => this.actionManager.reloadDocs(),
     });
 
     const showDocsButton = new TouchBarButton({
       label: 'Show Docs',
-      click: () => this.actionManager.showDocs(),
+
+      click: () => {
+        showDocsButton.label === 'Show Docs'
+          ? (showDocsButton.label = 'Hide Docs')
+          : (showDocsButton.label = 'Show Docs');
+        this.actionManager.showDocs();
+      },
     });
 
     const spacer = new TouchBarSpacer({
